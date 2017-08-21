@@ -1,0 +1,31 @@
+<div class="container">
+	<h1>User Management Form</h1>
+	<form [formGroup] = "userform">
+		<div class="form-group">
+			<input type="text" name="userName" placeholder="UserName" required ngModel formControlName="userName">
+		</div>
+		<br>
+		<div class="form-group">
+			<input type="text" name="jobTitle" placeholder="JobTitle" required ngModel formControlName="jobTitle">
+		</div>
+		<br>
+		 <button type="submit" id="postButton" class="btn btn-success" (click)="myevent('POST', userform.value)" [disabled]="!userform.valid">ADD</button>
+		 <button type="submit" id="getButton" class="btn btn-success" (click)="myevent('GET', userform.value)">GETALL</button>
+	</form>
+
+	<br><br><br>
+	<table>
+		<thead>
+			<th>Id</th>
+			<th>UserName</th>
+			<th>JobTitle</th>
+		</thead>
+		<tbody>
+				<tr *ngFor="let user of userarray">
+						<td>{{ user.id }}</td>
+						<td>{{ user.userName }}</td>
+						<td>{{ user.jobTitle }}</td>
+				</tr>
+		</tbody>
+	</table>
+</div>
